@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
 
+#filter-list{
+  display: none;
+}
+
+
 .filter-list-active {
   display: flex;
   border-radius: 0.5rem;
@@ -499,4 +504,18 @@ select {
   background-color: #333;
   text-decoration: none;
   cursor: pointer;
+}
+
+#clear-filters{
+  float: right;
+  margin-left: auto;
+
+  color:grey;
+
+}
+
+#clear-filters:hover{
+  cursor: pointer;
+  color: #5ba4a4;
+  text-decoration: underline;
 }

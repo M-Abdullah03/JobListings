@@ -21,6 +21,7 @@ $(document).ready(function () {
         $("#job-popup").hide();
     });
 
+
     $("#add-job-form").submit(function (e) {
         e.preventDefault();
 
@@ -28,7 +29,7 @@ $(document).ready(function () {
 
         var reader = new FileReader();
         reader.readAsDataURL($("#logo")[0].files[0]);
-        
+
         reader.onload = function () {
             var filePath = reader.result;
             var languageArray = $("#languages").val().split(",");
@@ -62,7 +63,7 @@ $(document).ready(function () {
 
 });
 
-function clean(array){
+function clean(array) {
     array = array.map(function (item) {
         return item.trim();
     });
@@ -73,7 +74,12 @@ function clean(array){
     return array;
 
 }
-
+function clearFilters(){
+    $("#filter-list").empty();
+    $("#filter-list").hide();
+    $(".main").css("margin-top", 170 + "px");
+    filterJobs();
+}
 function loadAllJobs() {
     $(".main").empty();
     var featuredJobs = jobs.filter(function (job) {
@@ -102,13 +108,17 @@ function filterJobs(filter) {
             newFilter = `<span class="active-filter">${filter} &nbsp;<span class="close" onclick="removeFilter('${filter}')">
                         <img src="images/icon-remove.svg" alt="remove" class="close-icon">
                         </span></span>`;
-            if ($("#filter-list").find("div").length === 0) {
+            if ($("#filter-list").find("span").length === 0) {
                 $("#filter-list").addClass("filter-list-active");
+                $("#filter-list").show();
+                var clear= `    <label id="clear-filters" onclick="clearFilters()">Clear</label>`;                
+                $("#filter-list").append(clear);
             }
             $("#filter-list").append(newFilter);
         }
     }
     var filterList = $("#filter-list").find("span");
+   
     var filterArray = [];
     var filteredJobs = jobs;
     console.log(filteredJobs);
@@ -159,7 +169,8 @@ function removeFilter(filter) {
     //check if filter list empty
     console.log($("#filter-list").find("span").length);
     if ($("#filter-list").find("span").length === 0) {
-        $("#filter-list").removeClass("filter-list-active");
+        //$("#filter-list").removeClass("filter-list-active");
+        $("#filter-list").hide();
         $(".main").css("margin-top", 170 + "px");
 
     }
@@ -175,6 +186,7 @@ function deleteJob(id) {
     var index = jobs.indexOf(job);
     jobs.splice(index, 1);
     loadAllJobs();
+    filterJobs();
 
 }
 
@@ -184,7 +196,7 @@ function viewInfo(id) {
     var job = jobs.find(function (job) {
         return job.id === parseInt(id);
     });
-   
+
     // Populate the job details in the popup
     if (job.new) {
         $("#job-popup .new-tag").show();
