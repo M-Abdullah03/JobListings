@@ -9,6 +9,10 @@
         
     }
 
+    nav{
+        background-image: url("./images/bg-header-mobile.svg");
+
+    }
     .card img,
     .expanded-card .logo {
         width: 20%;

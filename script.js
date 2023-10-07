@@ -72,6 +72,7 @@ function loadAllJobs() {
     checkHeight();
 }
 function filterJobs(filter) {
+    event.stopPropagation();
     $(".main").empty();
     var newFilter;
     if (filter) {
@@ -155,6 +156,7 @@ function removeFilter(filter) {
 }
 
 function deleteJob(id) {
+    event.stopPropagation();
     var job = jobs.find(function (job) {
         return job.id === id;
     });
