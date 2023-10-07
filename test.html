@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="checkbox"] {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 1rem;
+        }
+
+        input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        button[type="submit"] {
+            display: block;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        button[type="submit"]:hover,
+        button[type="submit"]:focus {
+            background-color: #0062cc;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            var addJobButton = $("#add-job-button");
+            var addJobModal = $("#add-job-modal");
+            var close = $(".close");
+            var addJobForm = $("#add-job-form");
+
+            // Add a click event listener to the add job button
+            addJobButton.on("click", function() {
+                // Show the add job modal
+                addJobModal.show();
+            });
+
+            // Add a click event listener to the close button
+            close.on("click", function() {
+                // Hide the add job modal
+                addJobModal.hide();
+            });
+
+            // Add a submit event listener to the add job form
+            addJobForm.on("submit", function(event) {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Get the form data
+                var formData = addJobForm.serializeArray();
+
+                // Validate the form data
+                var errors = validateFormData(formData);
+
+                if (errors.length > 0) {
+                    // Display the errors
+                    alert(errors.join("\n"));
+                } else {
+                    // Add the job to the data.json file
+                    addJob(formData);
+
+                    // Hide the add job modal
+                    addJobModal.hide();
+
+                    // Reset the form
+                    addJobForm[0].reset();
+
+                    // Display a success message
+                    alert("Job added successfully!");
+                }
+            });
+        });
+
+        function validateFormData(formData) {
+            var errors = [];
+
+            // Validate the company field
+            if (formData[0].value.trim() === "") {
+                errors.push("Company is required");
+            }
+
+            // Validate the logo field
+            if (formData[1].value.trim() === "") {
+                errors.push("Logo is required");
+            }
+
+            // Validate the position field
+            if (formData[4].value.trim() === "") {
+                errors.push("Position is required");
+            }
+
+            // Validate the role field
+            if (formData[5].value.trim() === "") {
+                errors.push("Role is required");
+            }
+
+            // Validate the level field
+            if (formData[6].value.trim() === "") {
+                errors.push("Level is required");
+            }
+
+            // Validate the postedAt field
+            if (formData[7].value.trim() === "") {
+                errors.push("Posted At is required");
+            }
+
+            // Validate the contract field
+            if (formData[8].value.trim() === "") {
+                errors.push("Contract is required");
+            }
+
+            // Validate the location field
+            if (formData[9].value.trim() === "") {
+                errors.push("Location is required");
+            }
+
+            // Validate the languages field
+            if (formData[10].value.trim() === "") {
+                errors.push("Languages are required");
+            }
+
+            // Validate the tools field
+            if (formData[11].value.trim() === "") {
+                errors.push("Tools are required");
+            }
+
+            return errors;
+        }
+
+        function addJob(formData) {
+            // Get the current data from the data.json file
+            var data = $.getJSON("data.json", function(data) {
+                // Get the last job ID
+                var lastJobId = data[data.length - 1].id;
+
+                // Create a new job object
+                var newJob = {
+                    id: lastJobId + 1,
+                    company: formData[0].value.trim(),
+                    logo: formData[1].value.trim(),
+                    new: formData[2].checked,
+                    featured: formData[3].checked,
+                    position: formData[4].value.trim(),
+                    role: formData[5].value.trim(),
+                    level: formData[6].value.trim(),
+                    postedAt: formData[7].value.trim(),
+                    contract: formData[8].value.trim(),
+                    location: formData[9].value.trim(),
+                    languages: formData[10].value.trim().split(","),
+                    tools: formData[11].value.trim().split(",")
+                };
+
+                // Add the new job to the data array
+                data.push(newJob);
+
+                // Write the updated data to the data.json file
+                $.ajax({
+                    url: "data.json",
+                    type: "PUT",
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function() {
+                        console.log("Job added successfully!");
+                    },
+                    error: function() {
+                        console.log("Error adding job!");
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="add-job-button">Add Job</button>
+
+
+</body>
+</html>
