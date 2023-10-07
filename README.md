@@ -1,17 +1,15 @@
-Job Listings
+**Job Listings**
+
 This is a web application that displays job listings for various positions in different locations. Users can filter the job listings by language,role,tools, job type, and job level.
 
-Table of Contents
-Installation
-Usage
-Contributing
-License
-Installation
+**Installation**
+
 These are the steps to install the project:
 
 Clone the repository using git clone https://github.com/<username>/<repository>.git.
 
-Usage
+**Usage:**
+
 This is how to use the project:
 
 Open the project in your web browser.
@@ -20,7 +18,7 @@ Click on a job listing to view more details.
 Use the filters to narrow down the job listings by location, job type, and job level.
 Use Add Job to add a new job
 
-Contributing
+**Contributing**
 These are the guidelines for contributing to the project:
 
 Fork the repository.
