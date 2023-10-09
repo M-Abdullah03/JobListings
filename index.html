@@ -23,13 +23,34 @@
 <body>
   <!-- navbar -->
   <nav></nav>
-  <div id="filter-list">
-    <!-- <span class="active-filter">Frontend 
+  <div id="filter-list" >
+    <!-- <span class="active-filter">Frontend
       <span class="close">
         <img src="./images/icon-remove.svg" alt="close" class="close-icon">
       </span>
-    </span> -->
-  </div>
+    </span>
+    <span class="active-filter">Frontend
+      <span class="close">
+        <img src="./images/icon-remove.svg" alt="close" class="close-icon">
+      </span>
+    </span>
+    <span class="active-filter">Frontend
+      <span class="close">
+        <img src="./images/icon-remove.svg" alt="close" class="close-icon">
+      </span>
+    </span>
+    <span class="active-filter">Frontend
+      <span class="close">
+        <img src="./images/icon-remove.svg" alt="close" class="close-icon">
+      </span>
+    </span>
+    <span class="active-filter">Frontend
+      <span class="close">
+        <img src="./images/icon-remove.svg" alt="close" class="close-icon">
+      </span>
+    </span>
+    <div id="clear-filters" onclick="clearFilters()">Clear</div> -->
+  </div> 
   <div class="main">
     <!-- <div class="card ">
         <div class="image-area">
@@ -76,7 +97,8 @@
       <h2>Add Job</h2>
       <form id="add-job-form">
         <label for="company">Company:</label>
-        <input type="text" id="company" name="company" required pattern="\S(.*\S)?" title="No whitespaces in beginning or end">
+        <input type="text" id="company" name="company" required pattern="\S(.*\S)?"
+          title="No whitespaces in beginning or end">
         <label for="logo">Logo:</label>
         <input type="file" id="logo" name="logo" accept="image/png, image/jpeg" required>
         <div class="checkboxes">
@@ -84,7 +106,8 @@
           <input type="checkbox" id="featured" name="featured" class="checkbox">
         </div>
         <label for="position">Position:</label>
-        <input type="text" id="position" name="position" required pattern="\S(.*\S)?" title="No whitespaces in beginning or end">
+        <input type="text" id="position" name="position" required pattern="\S(.*\S)?"
+          title="No whitespaces in beginning or end">
         <label for="role">Role:</label>
         <select id="role" name="role" required>
           <option value="">Choose</option>
@@ -109,9 +132,11 @@
         <label for="location">Location:</label>
         <input type="text" id="location" name="location" required>
         <label for="languages">Languages:</label>
-        <input type="text" id="languages" name="languages" required placeholder="Separate by commas" pattern="\S(.*\S)?" title="No whitespaces in beginning or end">
+        <input type="text" id="languages" name="languages" required placeholder="Separate by commas" pattern="\S(.*\S)?"
+          title="No whitespaces in beginning or end">
         <label for="tools">Tools:</label>
-        <input type="text" id="tools" name="tools" required placeholder="Separate by commas" pattern="\S(.*\S)?" title="No whitespaces in beginning or end">
+        <input type="text" id="tools" name="tools" required placeholder="Separate by commas" pattern="\S(.*\S)?"
+          title="No whitespaces in beginning or end">
         <button type="submit">Add Job</button>
       </form>
     </div>
@@ -180,4 +205,5 @@
 
 </body>
 <script src="script.js"></script>
+
 </html>

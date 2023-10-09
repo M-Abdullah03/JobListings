@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
 
-#filter-list{
+#filter-list {
   display: none;
 }
 
@@ -172,9 +172,11 @@ nav {
   font-weight: 700;
   color: #5ba4a4;
   background-color: #e1f9f6;
-  padding: 0.5rem 0.5rem 0.4rem 0.5rem;
+  padding: 0.5rem 0.3rem 0.4rem 0.5rem;
   margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
   border-radius: 5px;
+  display: inline-block;
 }
 
 .close {
@@ -182,12 +184,15 @@ nav {
   font-weight: 700;
   color: white;
   background-color: hsl(180, 29%, 50%);
-  padding: 0.5rem 0.5rem 0.4rem 0.5rem;
+  padding: 0.6rem 0.5rem 0.55rem 0.3rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   /* margin-right: 0.3rem; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
   margin-right: -0.3rem;
   align-items: center;
   vertical-align: middle;
+  cursor: pointer;
 
 
 }
@@ -467,7 +472,7 @@ select {
   color: #6c757d;
 }
 
-.posted-expanded{
+.posted-expanded {
   font-size: 0.8rem;
   font-weight: 400;
   color: hsl(180, 8%, 52%);
@@ -506,15 +511,15 @@ select {
   cursor: pointer;
 }
 
-#clear-filters{
+#clear-filters {
   float: right;
   margin-left: auto;
 
-  color:grey;
+  color: grey;
 
 }
 
-#clear-filters:hover{
+#clear-filters:hover {
   cursor: pointer;
   color: #5ba4a4;
   text-decoration: underline;
@@ -525,61 +530,62 @@ select {
 
   .card,
   .expanded-card {
-      flex-direction: column;
-      align-items: left;
-      text-align: left;
-      margin-bottom: 3rem;
-      
-  }
-
-  nav{
-      background-image: url("./images/bg-header-mobile.svg");
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    margin-bottom: 3rem;
 
   }
+
+  nav {
+    background-image: url("./images/bg-header-mobile.svg");
+
+  }
+
   .card img,
   .expanded-card .logo {
-      width: 20%;
-      height: auto;
-      position: absolute;
-      top: 0;
-      left: 15%;
-      transform: translate(-50%, -50%);
+    width: 20%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    transform: translate(-50%, -50%);
   }
 
-  #close-card{
-      position: absolute;
-      top: 10p;
-      right: 30px;
+  #close-card {
+    position: absolute;
+    top: 10p;
+    right: 30px;
   }
 
   .card .details {
-      position: relative;
-      z-index: 1;
+    position: relative;
+    z-index: 1;
   }
 
   .company {
-      margin-top: 1rem;
+    margin-top: 1rem;
   }
 
   .details {
-      /* add line at bottom */
-      border-bottom: 1px solid grey;
-      padding-bottom: 1rem;
+    /* add line at bottom */
+    border-bottom: 1px solid grey;
+    padding-bottom: 1rem;
   }
 
   .filter-list-active {
-      align-items: center;
-      padding: auto;
-      margin: auto;
+    align-items: center;
+    padding: auto;
+    margin: auto;
 
-      max-width: 90%;
+    max-width: 90%;
   }
 
   .filter-list-active .filter {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .filters{
-      margin-left: 0;
+  .filters {
+    margin-left: 0;
   }
 }

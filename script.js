@@ -171,6 +171,7 @@ function removeFilter(filter) {
     console.log($("#filter-list").find("span").length);
     if ($("#filter-list").find("span").length === 0) {
         //$("#filter-list").removeClass("filter-list-active");
+        $("#filter-list").empty();
         $("#filter-list").hide();
         $(".main").css("margin-top", 170 + "px");
 
