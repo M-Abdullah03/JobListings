@@ -71,6 +71,10 @@ function clean(array) {
     array = array.filter(function (item) {
         return item !== "";
     });
+
+    array = array.filter(function (item, index) {
+        return array.indexOf(item) === index;
+    });
     return array;
 
 }
