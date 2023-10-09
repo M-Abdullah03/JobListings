@@ -85,10 +85,19 @@ function loadAllJobs() {
     var featuredJobs = jobs.filter(function (job) {
         return job.featured;
     });
+    featuredJobs.sort(function (a, b) {
+        return b.new - a.new;
+    });
+    
 
     var nonFeaturedJobs = jobs.filter(function (job) {
         return !job.featured;
     });
+    nonFeaturedJobs.sort(function (a, b) {
+        return b.new - a.new;
+    });
+
+
     jobs = featuredJobs.concat(nonFeaturedJobs);
     console.log(featuredJobs);
     renderCards(featuredJobs);
