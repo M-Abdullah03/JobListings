@@ -109,6 +109,7 @@ function filterJobs(filter) {
                         <img src="images/icon-remove.svg" alt="remove" class="close-icon">
                         </span></span>`;
             if ($("#filter-list").find("span").length === 0) {
+                $("#filter-list").empty();
                 $("#filter-list").addClass("filter-list-active");
                 $("#filter-list").show();
                 var clear= `    <label id="clear-filters" onclick="clearFilters()">Clear</label>`;                
